@@ -24,8 +24,8 @@ pipeline {
             steps {
                 script {
                     def scannerHome = tool 'sonarqube-1';
-                    withSonarQubeEnv('sonarqube-1') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                    withSonarQubeEnv(installationName:'sonarqube-1') {
+                        sh "${tool('sonarqube-1')}/bin/sonar-scanner -Dsonarqube-1.projectKey=terraform"
                     }
                 }
             }
